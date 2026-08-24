@@ -30,4 +30,8 @@ public class CartItemService {
 	public void deleteCartItem(Long id) {
 		cartItemRepo.deleteById(id);
 	}
+	public CartItem updateCartItem(Long id, CartItem cartItem) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

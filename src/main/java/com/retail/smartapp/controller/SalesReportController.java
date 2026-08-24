@@ -4,13 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.retail.smartapp.model.SalesReport;
 import com.retail.smartapp.service.SalesReportService;
@@ -22,21 +16,34 @@ public class SalesReportController {
     @Autowired
     private SalesReportService salesReportService;
 
+    // GET - Get All Sales Reports
     @GetMapping
     public List<SalesReport> getAllUsersReport() {
         return salesReportService.getAllUsersReport();
     }
 
+    // GET - Get Sales Report By ID
     @GetMapping("/{id}")
     public Optional<SalesReport> getReportById(@PathVariable Long id) {
         return salesReportService.getReportById(id);
     }
 
+    // POST - Create Sales Report
     @PostMapping
     public SalesReport saveReport(@RequestBody SalesReport salesReport) {
         return salesReportService.CreateReport(salesReport);
     }
 
+    // PUT - Update Sales Report
+    @PutMapping("/{id}")
+    public SalesReport updateReport(
+            @PathVariable Long id,
+            @RequestBody SalesReport salesReport) {
+
+        return salesReportService.updateReport(id, salesReport);
+    }
+
+    // DELETE - Delete Sales Report
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
         salesReportService.deleteUser(id);

@@ -16,21 +16,34 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    // GET - Get All Products
     @GetMapping
     public List<Product> getAllProduct() {
         return productService.getAllProduct();
     }
 
+    // GET - Get Product By ID
     @GetMapping("/{id}")
     public Optional<Product> getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
+    // POST - Create Product
     @PostMapping
     public Product saveProduct(@RequestBody Product product) {
         return productService.CreateProduct(product);
     }
 
+    // PUT - Update Product
+    @PutMapping("/{id}")
+    public Product updateProduct(
+            @PathVariable Long id,
+            @RequestBody Product product) {
+
+        return productService.updateProduct(id, product);
+    }
+
+    // DELETE - Delete Product
     @DeleteMapping("/{id}")
     public String deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);

@@ -7,29 +7,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.retail.smartapp.model.Product;
-import com.retail.smartapp.model.SalesReport;
 import com.retail.smartapp.repo.ProductRepo;
-import com.retail.smartapp.repo.SalesReportRepo;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
-	@Autowired
-	private ProductRepo productRepo;
-	public List<Product> getAllProduct(){
-		return productRepo.findAll();
-	}
-	public Optional<Product> getProductById(Long id){
-		return productRepo.findById(id);
-	}
-	public Product CreateProduct(Product product) {
-		return productRepo.save(product);
-	}
-	public void deleteProduct(Long id) {
-		productRepo.deleteById(id);
-	}
-	
 
+    @Autowired
+    private ProductRepo productRepo;
+
+    // GET - Get All Products
+    public List<Product> getAllProduct() {
+        return productRepo.findAll();
+    }
+
+    // GET - Get Product By ID
+    public Optional<Product> getProductById(Long id) {
+        return productRepo.findById(id);
+    }
+
+    // POST - Create Product
+    public Product CreateProduct(Product product) {
+        return productRepo.save(product);
+    }
+
+    // PUT - Update Product
+    public Product updateProduct(Long id, Product product) {
+
+        Product existingProduct = productRepo.findById(id)
+                .orElseThrow(() ->
+                    new RuntimeException(
+                        "Product not found with id: " + id));
+
+        // Update Product fields here
+        // Example:
+        // existingProduct.setProductName(product.getProductName());
+        // existingProduct.setPrice(product.getPrice());
+        // existingProduct.setQuantity(product.getQuantity());
+
+        return productRepo.save(existingProduct);
+    }
+
+    // DELETE - Delete Product
+    public void deleteProduct(Long id) {
+        productRepo.deleteById(id);
+    }
 }

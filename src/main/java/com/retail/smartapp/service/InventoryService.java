@@ -7,27 +7,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.retail.smartapp.model.Inventory;
-import com.retail.smartapp.model.MarketingCampaign;
 import com.retail.smartapp.repo.InventoryRepo;
-import com.retail.smartapp.repo.MarketingCampaignRepo;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class InventoryService {
-	@Autowired
-	private InventoryRepo inventoryRepo;
-	public List<Inventory> getAllInventory(){
-		return inventoryRepo.findAll();
-	}
-	public Optional<Inventory> getInventoryById(Long id){
-		return inventoryRepo.findById(id);
-	}
-	public Inventory CreateInventory(Inventory inventory) {
-		return inventoryRepo.save(inventory);
-	}
-	public void deleteInventory(Long id) {
-		inventoryRepo.deleteById(id);
-	}
+
+    @Autowired
+    private InventoryRepo inventoryRepo;
+
+    // GET - Get All Inventory
+    public List<Inventory> getAllInventory() {
+        return inventoryRepo.findAll();
+    }
+
+    // GET - Get Inventory By ID
+    public Optional<Inventory> getInventoryById(Long id) {
+        return inventoryRepo.findById(id);
+    }
+
+    // POST - Create Inventory
+    public Inventory CreateInventory(Inventory inventory) {
+        return inventoryRepo.save(inventory);
+    }
+
+    // PUT - Update Inventory
+    public Inventory updateInventory(Long id, Inventory inventory) {
+
+        Inventory existingInventory = inventoryRepo.findById(id)
+                .orElseThrow(() ->
+                    new RuntimeException(
+                        "Inventory not found with id: " + id));
+
+        // Update Inventory fields here
+        // Example:
+        // existingInventory.setProductName(inventory.getProductName());
+        // existingInventory.setQuantity(inventory.getQuantity());
+        // existingInventory.setPrice(inventory.getPrice());
+
+        return inventoryRepo.save(existingInventory);
+    }
+
+    // DELETE - Delete Inventory
+    public void deleteInventory(Long id) {
+        inventoryRepo.deleteById(id);
+    }
 }

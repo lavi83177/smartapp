@@ -7,27 +7,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.retail.smartapp.model.CustomerProfile;
-import com.retail.smartapp.model.Inventory;
 import com.retail.smartapp.repo.CustomerProfileRepo;
-import com.retail.smartapp.repo.InventoryRepo;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerProfileService {
-	@Autowired
-	private CustomerProfileRepo customerProfileRepo;
-	public List<CustomerProfile> getAllCustomerProfile(){
-		return customerProfileRepo.findAll();
-	}
-	public Optional<CustomerProfile> getCustomerProfileById(Long id){
-		return customerProfileRepo.findById(id);
-	}
-	public CustomerProfile CreateCustomerProfile(CustomerProfile customerProfile) {
-		return customerProfileRepo.save(customerProfile);
-	}
-	public void deleteCustomerProfile(Long id) {
-		customerProfileRepo.deleteById(id);
-	}
+
+    @Autowired
+    private CustomerProfileRepo customerProfileRepo;
+
+    // GET - Get All Customer Profiles
+    public List<CustomerProfile> getAllCustomerProfile() {
+        return customerProfileRepo.findAll();
+    }
+
+    // GET - Get Customer Profile By ID
+    public Optional<CustomerProfile> getCustomerProfileById(Long id) {
+        return customerProfileRepo.findById(id);
+    }
+
+    // POST - Create Customer Profile
+    public CustomerProfile CreateCustomerProfile(CustomerProfile customerProfile) {
+        return customerProfileRepo.save(customerProfile);
+    }
+
+    // PUT - Update Customer Profile
+    public CustomerProfile updateCustomerProfile(
+            Long id,
+            CustomerProfile customerProfile) {
+
+        CustomerProfile existingCustomerProfile =
+                customerProfileRepo.findById(id)
+                .orElseThrow(() ->
+                    new RuntimeException(
+                        "Customer Profile not found with id: " + id));
+
+        // Update fields here
+        // Example:
+        // existingCustomerProfile.setName(customerProfile.getName());
+        // existingCustomerProfile.setEmail(customerProfile.getEmail());
+        // existingCustomerProfile.setPhone(customerProfile.getPhone());
+
+        return customerProfileRepo.save(existingCustomerProfile);
+    }
+
+    // DELETE - Delete Customer Profile
+    public void deleteCustomerProfile(Long id) {
+        customerProfileRepo.deleteById(id);
+    }
 }

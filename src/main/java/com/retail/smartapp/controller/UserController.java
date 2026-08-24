@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,27 +17,40 @@ import com.retail.smartapp.model.User;
 import com.retail.smartapp.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    // GET - Get All Users
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    // GET - Get User By ID
     @GetMapping("/{id}")
     public Optional<User> getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
+    // POST - Create User
     @PostMapping
     public User saveUser(@RequestBody User user) {
         return userService.CreateUser(user);
     }
 
+    // PUT - Update User
+    @PutMapping("/{id}")
+    public User updateUser(
+            @PathVariable Long id,
+            @RequestBody User user) {
+
+        return userService.updateUser(id, user);
+    }
+
+    // DELETE - Delete User
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
