@@ -10,7 +10,7 @@ import com.retail.smartapp.model.Product;
 import com.retail.smartapp.service.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired

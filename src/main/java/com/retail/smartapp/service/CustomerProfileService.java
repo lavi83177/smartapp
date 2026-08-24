@@ -41,11 +41,20 @@ public class CustomerProfileService {
                     new RuntimeException(
                         "Customer Profile not found with id: " + id));
 
-        // Update fields here
-        // Example:
-        // existingCustomerProfile.setName(customerProfile.getName());
-        // existingCustomerProfile.setEmail(customerProfile.getEmail());
-        // existingCustomerProfile.setPhone(customerProfile.getPhone());
+        existingCustomerProfile.setTotalPurchase(
+                customerProfile.getTotalPurchase());
+
+        existingCustomerProfile.setTotalOrders(
+                customerProfile.getTotalOrders());
+
+        existingCustomerProfile.setCustomerSegment(
+                customerProfile.getCustomerSegment());
+
+        existingCustomerProfile.setLifetimeValue(
+                customerProfile.getLifetimeValue());
+
+        existingCustomerProfile.setLastPurchaseDate(
+                customerProfile.getLastPurchaseDate());
 
         return customerProfileRepo.save(existingCustomerProfile);
     }

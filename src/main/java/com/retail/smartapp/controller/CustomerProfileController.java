@@ -10,7 +10,7 @@ import com.retail.smartapp.model.CustomerProfile;
 import com.retail.smartapp.service.CustomerProfileService;
 
 @RestController
-@RequestMapping("/customer-profiles")
+@RequestMapping("/api/customer-profiles")
 public class CustomerProfileController {
 
     @Autowired

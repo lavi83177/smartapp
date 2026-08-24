@@ -10,7 +10,7 @@ import com.retail.smartapp.model.OrderItem;
 import com.retail.smartapp.service.OrderItemService;
 
 @RestController
-@RequestMapping("/order-items")
+@RequestMapping("/api/order-items")
 public class OrderItemController {
 
     @Autowired

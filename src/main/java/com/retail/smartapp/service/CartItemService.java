@@ -31,7 +31,13 @@ public class CartItemService {
 		cartItemRepo.deleteById(id);
 	}
 	public CartItem updateCartItem(Long id, CartItem cartItem) {
-		// TODO Auto-generated method stub
-		return null;
+
+	    CartItem existingCartItem = cartItemRepo.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Cart Item not found with id: " + id));
+
+	    existingCartItem.setQuantity(cartItem.getQuantity());
+	    existingCartItem.setSubtotal(cartItem.getSubtotal());
+
+	    return cartItemRepo.save(existingCartItem);
 	}
 }

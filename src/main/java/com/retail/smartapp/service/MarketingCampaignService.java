@@ -43,11 +43,29 @@ public class MarketingCampaignService {
                     new RuntimeException(
                         "Marketing Campaign not found with id: " + id));
 
-        // Set your MarketingCampaign fields here
+        existingCampaign.setCampaignName(
+                marketingCampaign.getCampaignName());
+
+        existingCampaign.setDescription(
+                marketingCampaign.getDescription());
+
+        existingCampaign.setDiscountPercentage(
+                marketingCampaign.getDiscountPercentage());
+
+        existingCampaign.setStartDate(
+                marketingCampaign.getStartDate());
+
+        existingCampaign.setEndDate(
+                marketingCampaign.getEndDate());
+
+        existingCampaign.setTargetSegment(
+                marketingCampaign.getTargetSegment());
+
+        existingCampaign.setStatus(
+                marketingCampaign.getStatus());
 
         return marketingCampaignRepo.save(existingCampaign);
     }
-
     // DELETE - Delete Marketing Campaign
     public void deleteMarketingCampaign(Long id) {
         marketingCampaignRepo.deleteById(id);

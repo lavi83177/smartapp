@@ -38,11 +38,12 @@ public class ProductService {
                     new RuntimeException(
                         "Product not found with id: " + id));
 
-        // Update Product fields here
-        // Example:
-        // existingProduct.setProductName(product.getProductName());
-        // existingProduct.setPrice(product.getPrice());
-        // existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setProductName(product.getProductName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setStockQuantity(product.getStockQuantity());
+        existingProduct.setImageUrl(product.getImageUrl());
+        existingProduct.setStatus(product.getStatus());
 
         return productRepo.save(existingProduct);
     }

@@ -38,11 +38,11 @@ public class PaymentService {
                     new RuntimeException(
                         "Payment not found with id: " + id));
 
-        // Update Payment fields here
-        // Example:
-        // existingPayment.setAmount(payment.getAmount());
-        // existingPayment.setPaymentStatus(payment.getPaymentStatus());
-        // existingPayment.setPaymentMethod(payment.getPaymentMethod());
+        existingPayment.setPaymentMethod(payment.getPaymentMethod());
+        existingPayment.setPaymentStatus(payment.getPaymentStatus());
+        existingPayment.setTransactionId(payment.getTransactionId());
+        existingPayment.setPaymentDate(payment.getPaymentDate());
+        existingPayment.setAmount(payment.getAmount());
 
         return paymentRepo.save(existingPayment);
     }

@@ -17,7 +17,7 @@ import com.retail.smartapp.model.CartItem;
 import com.retail.smartapp.service.CartItemService;
 
 @RestController
-@RequestMapping("/cart-items")
+@RequestMapping("/api/cart-items")
 public class CartItemController {
 
     @Autowired

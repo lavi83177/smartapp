@@ -10,7 +10,7 @@ import com.retail.smartapp.model.SalesReport;
 import com.retail.smartapp.service.SalesReportService;
 
 @RestController
-@RequestMapping("/sales-reports")
+@RequestMapping("/api/sales-reports")
 public class SalesReportController {
 
     @Autowired

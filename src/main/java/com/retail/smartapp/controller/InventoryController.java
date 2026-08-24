@@ -10,7 +10,7 @@ import com.retail.smartapp.model.Inventory;
 import com.retail.smartapp.service.InventoryService;
 
 @RestController
-@RequestMapping("/inventory")
+@RequestMapping("/api/inventory")
 public class InventoryController {
 
     @Autowired

@@ -31,15 +31,15 @@ public class CategoryService {
     }
 
     // PUT - Update Category
+   
     public Category updateCategory(Long id, Category category) {
 
         Category existingCategory = categoryRepo.findById(id)
                 .orElseThrow(() ->
                     new RuntimeException("Category not found with id: " + id));
 
-        // Update Category fields here
-        // Example:
-        // existingCategory.setCategoryName(category.getCategoryName());
+        existingCategory.setCategoryName(category.getCategoryName());
+        existingCategory.setDescription(category.getDescription());
 
         return categoryRepo.save(existingCategory);
     }

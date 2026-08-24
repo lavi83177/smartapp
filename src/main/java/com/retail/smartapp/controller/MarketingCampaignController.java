@@ -10,7 +10,7 @@ import com.retail.smartapp.model.MarketingCampaign;
 import com.retail.smartapp.service.MarketingCampaignService;
 
 @RestController
-@RequestMapping("/marketing-campaigns")
+@RequestMapping("/api/marketing-campaigns")
 public class MarketingCampaignController {
 
     @Autowired

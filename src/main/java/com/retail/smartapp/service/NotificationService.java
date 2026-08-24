@@ -41,10 +41,11 @@ public class NotificationService {
                     new RuntimeException(
                         "Notification not found with id: " + id));
 
-        // Update Notification fields here
-        // Example:
-        // existingNotification.setMessage(notification.getMessage());
-        // existingNotification.setStatus(notification.getStatus());
+        existingNotification.setTitle(notification.getTitle());
+        existingNotification.setMessage(notification.getMessage());
+        existingNotification.setType(notification.getType());
+        existingNotification.setIsRead(notification.getIsRead());
+        existingNotification.setCreatedAt(notification.getCreatedAt());
 
         return notificationRepo.save(existingNotification);
     }

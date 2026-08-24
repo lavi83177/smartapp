@@ -38,11 +38,11 @@ public class OrderService {
                     new RuntimeException(
                         "Order not found with id: " + id));
 
-        // Update Order fields here
-        // Example:
-        // existingOrder.setTotalAmount(order.getTotalAmount());
-        // existingOrder.setStatus(order.getStatus());
-        // existingOrder.setOrderDate(order.getOrderDate());
+        existingOrder.setTotalPurchase(order.getTotalPurchase());
+        existingOrder.setOrderStatus(order.getOrderStatus());
+        existingOrder.setPaymentStatus(order.getPaymentStatus());
+        existingOrder.setShippingAddress(order.getShippingAddress());
+        existingOrder.setOrderDate(order.getOrderDate());
 
         return orderRepo.save(existingOrder);
     }

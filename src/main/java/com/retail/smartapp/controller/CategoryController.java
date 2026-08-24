@@ -10,7 +10,7 @@ import com.retail.smartapp.model.Category;
 import com.retail.smartapp.service.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
     @Autowired

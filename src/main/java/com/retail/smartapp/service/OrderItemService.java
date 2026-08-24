@@ -38,14 +38,12 @@ public class OrderItemService {
                     new RuntimeException(
                         "Order Item not found with id: " + id));
 
-        // Update OrderItem fields here
-        // Example:
-        // existingOrderItem.setQuantity(orderItem.getQuantity());
-        // existingOrderItem.setPrice(orderItem.getPrice());
+        existingOrderItem.setQuantity(orderItem.getQuantity());
+        existingOrderItem.setPrice(orderItem.getPrice());
+        existingOrderItem.setSubtotal(orderItem.getSubtotal());
 
         return orderItemRepo.save(existingOrderItem);
     }
-
     // DELETE - Delete Order Item
     public void deleteOrderItem(Long id) {
         orderItemRepo.deleteById(id);

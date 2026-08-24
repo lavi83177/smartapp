@@ -38,11 +38,9 @@ public class InventoryService {
                     new RuntimeException(
                         "Inventory not found with id: " + id));
 
-        // Update Inventory fields here
-        // Example:
-        // existingInventory.setProductName(inventory.getProductName());
-        // existingInventory.setQuantity(inventory.getQuantity());
-        // existingInventory.setPrice(inventory.getPrice());
+        existingInventory.setAvailableStock(inventory.getAvailableStock());
+        existingInventory.setReorderLevel(inventory.getReorderLevel());
+        existingInventory.setLastUpdated(inventory.getLastUpdated());
 
         return inventoryRepo.save(existingInventory);
     }

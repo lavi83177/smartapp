@@ -10,7 +10,7 @@ import com.retail.smartapp.model.Payment;
 import com.retail.smartapp.service.PaymentService;
 
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/api/payments")
 public class PaymentController {
 
     @Autowired

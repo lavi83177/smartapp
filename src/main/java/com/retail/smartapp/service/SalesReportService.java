@@ -38,14 +38,13 @@ public class SalesReportService {
                     new RuntimeException(
                         "Sales Report not found with id: " + id));
 
-        // Update SalesReport fields here
-        // Example:
-        // existingReport.setTotalSales(salesReport.getTotalSales());
-        // existingReport.setReportDate(salesReport.getReportDate());
+        existingReport.setReportType(salesReport.getReportType());
+        existingReport.setTotalSales(salesReport.getTotalSales());
+        existingReport.setTotalOrders(salesReport.getTotalOrders());
+        existingReport.setGenerateDate(salesReport.getGenerateDate());
 
         return salesReportRepo.save(existingReport);
     }
-
     // DELETE - Delete Sales Report
     public void deleteUser(Long id) {
         salesReportRepo.deleteById(id);

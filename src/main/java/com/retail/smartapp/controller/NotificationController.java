@@ -10,7 +10,7 @@ import com.retail.smartapp.model.Notification;
 import com.retail.smartapp.service.NotificationService;
 
 @RestController
-@RequestMapping("/notifications")
+@RequestMapping("/api/notifications")
 public class NotificationController {
 
     @Autowired
