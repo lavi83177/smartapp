@@ -1,0 +1,36 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Smart Retail & CRM",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#22C55E",
+    "dark": "#15803D"
+  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "installation"
+      ]
+    },
+    {
+      "group": "Architecture",
+      "pages": [
+        "architecture",
+        "project-structure"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api/users",
+        "api/company",
+        "api/cart",
+        "api/orders",
+        "api/payment"
+      ]
+    }
+  ]
+}
